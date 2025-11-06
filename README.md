@@ -15,11 +15,22 @@ Tüm kullanıcı verileri **Firebase Firestore** üzerinde saklanır.
 ## 📱 Demo ve Ekran Görüntüleri
 
 ### 🎬 Çalışma Videosu (Demo)
-> NOT: `.github/media/` klasörüne demo.gif veya demo.mp4 videonu ekle.  
-> Örnek:  
-> ![Uygulama Demosu](.github/media/demo.gif)
 
-### 🖼️ Ekran Görüntüleri
+
+<p align="center">
+  <b>Ana Sayfa & Oynatıcı</b><br>
+  <video src=".github/media/home.mp4" width="250" controls></video>
+  <video src=".github/media/player.mp4" width="250" controls></video>
+</p>
+
+<p align="center">
+  <b>Arama Ekranı</b><br>
+  <video src=".github/media/search.mp4" width="250" controls></video>
+  <video src=".github/media/search2.mp4" width="250" controls></video>
+</p>
+
+---
+
 
 **Giriş / Kayıt – Anasayfa – Arama**
 <p float="left">
@@ -33,8 +44,6 @@ Tüm kullanıcı verileri **Firebase Firestore** üzerinde saklanır.
   <img src=".github/media/LibraryPage.png?raw=true" width="200" alt="Kitaplık">
   <img src=".github/media/PlayerPage.png?raw=true" width="200" alt="Tam Ekran Oynatıcı">
 </p>
-
----
 
 ## ✨ Özellikler
 
@@ -82,9 +91,38 @@ Tüm kullanıcı verileri **Firebase Firestore** üzerinde saklanır.
 
 ## 🛠️ Kurulum (Development)
 
-Bu projeyi yerel makinenizde çalıştırmak için:
+Bu projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 
-### 1. Projeyi Klonla
-```bash
-git clone https://github.com/Nightbold/MusicApp.git
-cd MusicApp
+1. **Projeyi Klonla**
+   ```bash
+   git clone https://github.com/Nightbold/MusicApp.git
+   cd MusicApp
+2. **Gerekli Paketleri Yükle**
+   ```bash
+   flutter pub get
+3. **Firebase Ayarlarını Yapılandır**
+
+    - Firebase'den indirdiğiniz google-services.json dosyasını android/app/ klasörüne kopyalayın.
+    Bu dosyaları kendi Firebase projenizden indirebilirsiniz.
+4. **Spotify API Anahtarları**
+    
+    - lib/ klasörü içinde Strings.dart adında yeni bir dosya oluşturun.
+    - Aşağıdaki kodu bu dosyanın içine yapıştırın ve kendi Spotify API anahtarlarınızla doldurun:
+      ```bash
+      // lib/Strings.dart
+
+      class CustomStrings {
+        static const String clientID = "BURAYA_SENİN_SPOTIFY_CLIENT_ID_YAZ";
+        static const String cliensecret = "BURAYA_SENİN_SPOTIFY_CLIENT_SECRET_YAZ";
+      }
+      # (Bu dosya .gitignore tarafından korunmaktadır ve GitHub'a yüklenmez.)
+    
+
+4. **Uygulamayı Çalıştır**
+   ```bash
+   flutter run 
+ Not: Uygulama çalışması için platforma özel yapılandırmalar, Firebase konfigürasyonu ve gerekli izinler gerekebilir.
+  Terminalde çıkan hatalar genelde eksik dosya, anahtar veya izinle ilgilidir — oradan ilerleyin.
+
+
+
