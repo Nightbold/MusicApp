@@ -32,6 +32,7 @@ Tüm kullanıcı verileri **Firebase Firestore** üzerinde saklanır.
 ---
 
 
+
 **Giriş / Kayıt – Anasayfa – Arama**
 <p float="left">
   <img src=".github/media/SignInPage.png?raw=true" width="200" alt="Giriş Ekranı">
