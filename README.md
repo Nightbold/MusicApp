@@ -20,12 +20,12 @@ Tüm kullanıcı verileri **Firebase Firestore** üzerinde saklanır.
 <p align="center">
   <b>Ana Sayfa & Oynatıcı</b><br>
   <img src=".github/media/Home.gif?raw=true" width="250" alt="Ana Sayfa ve Oynatıcı Demosu">
-  <img src=".github/media/player.gif?raw=true" width="250" alt="Oynatıcı ">
+  <img src=".github/media/Player.gif?raw=true" width="250" alt="Oynatıcı ">
 </p>
 <p align="center">
   <b>Arama & Kitaplık</b><br>
-  <img src=".github/media/search.gif?raw=true" width="250" alt="Arama ">
-  <img src=".github/media/search2.gif?raw=true" width="250" alt="Kitaplık">
+  <img src=".github/media/Search.gif?raw=true" width="250" alt="Arama ">
+  <img src=".github/media/Search2.gif?raw=true" width="250" alt="Kitaplık">
 </p>
 
 
