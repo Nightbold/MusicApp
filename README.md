@@ -19,15 +19,15 @@ Tüm kullanıcı verileri **Firebase Firestore** üzerinde saklanır.
 
 <p align="center">
   <b>Ana Sayfa & Oynatıcı</b><br>
-  <video src=".github/media/home.mp4" width="250" controls></video>
-  <video src=".github/media/player.mp4" width="250" controls></video>
+  <img src=".github/media/Home.gif?raw=true" width="250" alt="Ana Sayfa ve Oynatıcı Demosu">
+  <img src=".github/media/player.gif?raw=true" width="250" alt="Oynatıcı ">
+</p>
+<p align="center">
+  <b>Arama & Kitaplık</b><br>
+  <img src=".github/media/search.gif?raw=true" width="250" alt="Arama ">
+  <img src=".github/media/search2.gif?raw=true" width="250" alt="Kitaplık">
 </p>
 
-<p align="center">
-  <b>Arama Ekranı</b><br>
-  <video src=".github/media/search.mp4" width="250" controls></video>
-  <video src=".github/media/search2.mp4" width="250" controls></video>
-</p>
 
 ---
 
@@ -109,14 +109,14 @@ Bu projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izley
     
     - lib/ klasörü içinde Strings.dart adında yeni bir dosya oluşturun.
     - Aşağıdaki kodu bu dosyanın içine yapıştırın ve kendi Spotify API anahtarlarınızla doldurun:
-      ```bash
+      ```dart
       // lib/Strings.dart
 
       class CustomStrings {
         static const String clientID = "BURAYA_SENİN_SPOTIFY_CLIENT_ID_YAZ";
         static const String cliensecret = "BURAYA_SENİN_SPOTIFY_CLIENT_SECRET_YAZ";
       }
-      # (Bu dosya .gitignore tarafından korunmaktadır ve GitHub'a yüklenmez.)
+      // (Bu dosya .gitignore tarafından korunmaktadır ve GitHub'a yüklenmez.)
     
 
 4. **Uygulamayı Çalıştır**

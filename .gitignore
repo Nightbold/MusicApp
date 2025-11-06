@@ -61,3 +61,7 @@ app.*.map.json
 # Çevre değişkeni dosyaları
 /.env
 *.env
+
+# --------- Medya Dosyaları (Repo'ya Gitmesin) ---------
+*.mp4
+*.mov
