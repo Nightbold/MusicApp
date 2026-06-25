@@ -59,7 +59,7 @@ void main() async {
 class msd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // 1. TÜM SERVİSLERİ SAĞLA
+   
     return MultiProvider(
       providers: [
         Provider(create: (_) => Spottify()),
@@ -71,19 +71,18 @@ class msd extends StatelessWidget {
         Provider(create: (ctx) => Database(ctx.read<UserControl>())),
       ],
       child: ChangeNotifierProvider(
-        // 2. AUTH VIEWMODEL'I SAĞLA
+       
         create: (context) => AuthViewModel(
           context.read<UserControl>(),
           context.read<Database>(),
         ),
-        // 3. AuthViewModel'ı DİNLE
+       
         child: Consumer<AuthViewModel>(
           builder: (context, authViewModel, _) {
-            // 4. Auth durumuna göre (giriş yapıldıysa)
-            //    KULLANICIYA ÖZEL ViewModel'ları sağla
+          
             return MultiProvider(
               providers: [
-                // Bu provider'lar AuthViewModel'daki 'user'a bağlı
+            
                 ChangeNotifierProvider(create: (_) => NavigationViewModel()),
                 ChangeNotifierProvider(
                   create: (context) => MiniPlayerViewModel(
@@ -110,15 +109,14 @@ class msd extends StatelessWidget {
                   ),
                 ),
                 ChangeNotifierProvider(create: (_) => HomeViewModel()),
-                // activeprovider'ı da buraya taşı
-                // ChangeNotifierProvider(create: (_) => activeprovider()),
+             
               ],
               child: MaterialApp(
                 navigatorKey: navigatorKey,
                 theme: MyTheme.themeData,
                 debugShowCheckedModeBanner: false,
                 title: 'My App',
-                // 5. Auth durumuna göre Home veya Login'i göster
+             
                 home: authViewModel.status == AuthStatus.authenticated
                     ? Home(user: authViewModel.user!)
                     : LoginPage(),
@@ -148,7 +146,7 @@ class _HomeState extends State<Home> {
     _user = widget.user;
   }
 
-// Her sekme için ayrı Navigator anahtarları
+
   final Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
     0: GlobalKey<NavigatorState>(),
     1: GlobalKey<NavigatorState>(),
@@ -161,11 +159,11 @@ class _HomeState extends State<Home> {
     return Navigator(
       key: key,
       onGenerateRoute: (routeSettings) {
-        // Ana rota ('/') istendiğinde rootPage
+      
         if (routeSettings.name == '/') {
           return MaterialPageRoute(builder: (context) => rootPage);
         }
-        // Eğer '/album' gibi bir rota istenirse AlbumPage'i
+      
         if (routeSettings.name == '/album' &&
             routeSettings.arguments is Album) {
           final album = routeSettings.arguments as Album;
@@ -183,36 +181,35 @@ class _HomeState extends State<Home> {
     final selectedIndex = context.watch<NavigationViewModel>().selectedIndex;
     final isMiniPlayerActive = context.watch<MiniPlayerViewModel>().isActive;
     const double miniPlayerHeight = 75.0;
-    // O an aktif olan sekmenin Navigator anahtarını al
+    
     final GlobalKey<NavigatorState> currentNavigatorKey =
         navigatorKeys[selectedIndex]!;
     return WillPopScope(
       onWillPop: () async {
-        // 1. Mevcut sekmenin Navigator'ında geri gitmeyi dene
+      
         final bool canPopNested =
             await currentNavigatorKey.currentState?.maybePop() ?? false;
-        // 2. Eğer iç navigator geri gidemiyorsa:
+       
         if (!canPopNested) {
-          // Eğer ana sayfada (index 0) değilsek, ana sayfaya dön
+         
           if (selectedIndex != 0) {
             context.read<NavigationViewModel>().setIndex(0);
             return false;
           } else {
-            // Ana sayfadaysak, uygulamadan çıkmaya izin ver
+           
             return true;
           }
         }
-        // Eğer iç navigator geri gittiyse, uygulamadan çıkma
+     
         return false;
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
-            // IndexedStack (Sayfaları içerir)
+           
             Padding(
-              // Alttan MiniPlayer + BNB kadar boşluk bırak
-              // Sadece MiniPlayer aktifse MiniPlayer kadar
+             
               padding: EdgeInsets.only(
                   bottom: isMiniPlayerActive ? miniPlayerHeight : 0.0),
               child: IndexedStack(
@@ -225,9 +222,9 @@ class _HomeState extends State<Home> {
               ),
             ),
 
-            //  MiniPlayer (Her zaman en üstte, Padding'in etkilemediği alanda)
+         
             Positioned(
-              bottom: 0, // Stack'in en altına
+              bottom: 0, 
               left: 0,
               right: 0,
               child: MiniPlayer(currentNavigatorKey: currentNavigatorKey),
@@ -237,13 +234,13 @@ class _HomeState extends State<Home> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
           onTap: (index) {
-            // Eğer aynı sekmeye tekrar basıldıysa, o sekmenin Navigator'ını en başa döndür
+          
             if (selectedIndex == index) {
               navigatorKeys[index]
                   ?.currentState
                   ?.popUntil((route) => route.isFirst);
             }
-            // Farklı sekmeye basıldıysa index'i değiştir
+        
             else {
               context.read<NavigationViewModel>().setIndex(index);
             }
